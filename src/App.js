@@ -11,6 +11,9 @@ import Header from './All-Pages/Home-Page/Header/Header';
 import NotFound from './Not-Found/NotFound';
 import OrderPalace from './Order-Palace/OrderPalace';
 import MyOrders from './Users-Page/My-Orders/MyOrders';
+import RegisterPage from './Login-Page/RegisterPage';
+import PrivateRoute from './Login-Page/PrivateRoute';
+import ManageAllOrders from './Admin-Dashboard/ManageAllOrders';
 
 function App() {
   return (
@@ -27,17 +30,23 @@ function App() {
         <Route exact path ='/addcar'>
             <AddCar/>
         </Route>
-        <Route exact path='/order/:orderId'>
+        <PrivateRoute exact path='/order/:orderId'>
  <OrderPalace/>
-</Route>
+</PrivateRoute>
         <Route exact path='/myorders'>
  <MyOrders/>
+</Route>
+        <Route exact path='/manage-orders'>
+ <ManageAllOrders/>
 </Route>
         <Route exact path ='/give-review'>
             <GiveReview/>
         </Route>
         <Route exact path ='/login'>
             <LoginPage/>
+        </Route>
+        <Route exact path ='/register'>
+            <RegisterPage/>
         </Route>
         <Route exact path ='*'>
             <NotFound/>

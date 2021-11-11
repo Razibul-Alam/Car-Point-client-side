@@ -2,7 +2,7 @@ import React from 'react';
 import {Button,Col,Card} from 'react-bootstrap'
 import axios from 'axios';
 
-const MySingleOrder = ({order,cancelBooking}) => {
+const MySingleOrder = ({order,cancelOrder}) => {
     const{_id,title,status,name,address,phone}=order;
   
     // booking approve handle
@@ -28,7 +28,7 @@ axios.put('https://hidden-bayou-72012.herokuapp.com/updateStatus',approval)
              {status}
             </Card.Text>
            {status.length<8&& <Button className='me-2' onClick={()=>{approveBooking(_id)}}>Approve</Button>}
-            {/* <Button onClick={()=>{cancelBooking(_id)}}>Cancel</Button> */}
+            <Button onClick={()=>{cancelOrder(_id)}}>Cancel</Button>
           </Card.Body>
           
         </Card>

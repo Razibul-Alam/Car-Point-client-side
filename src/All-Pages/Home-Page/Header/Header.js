@@ -1,9 +1,10 @@
 import React from 'react';
-import { Navbar,Nav,Container} from 'react-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import useAuth from './../../../Hooks/useAuth';
 const Header = () => {
-    const{user}=useAuth()
+    const{user,logOut}=useAuth()
+    console.log(user)
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Container>
@@ -15,12 +16,13 @@ const Header = () => {
       <Nav.Link as= {Link} to='/services'>Services</Nav.Link>
       <Nav.Link as= {Link} to='/services'>About us</Nav.Link>
       <Nav.Link as= {Link} to='/addcar'>Add Car</Nav.Link>
-      <Nav.Link as= {Link} to='/services'>Manage-Orders</Nav.Link>
+      <Nav.Link as= {Link} to='/manage-orders'>Manage-Orders</Nav.Link>
       <Nav.Link as= {Link} to='/services'>Make Admin</Nav.Link>
       <Nav.Link as= {Link} to='/myorders'>My-Orders</Nav.Link>
       <Nav.Link as= {Link} to='/give-review'>Review</Nav.Link>
       <Nav.Link as= {Link} to='/services'>Payment</Nav.Link>
-     {user?.email? <Nav.Link as= {Link} to='/'>Logout</Nav.Link>
+       <Nav.Link>{user.displayName}</Nav.Link>
+     {user?.email? <Button onClick={logOut}>Logout</Button>
       :<Nav.Link as= {Link} to='/login'>Login</Nav.Link>}
     </Nav>
   </Navbar.Collapse>

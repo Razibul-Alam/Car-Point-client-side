@@ -10,6 +10,7 @@ import LoginPage from './Login-Page/LoginPage';
 import Header from './All-Pages/Home-Page/Header/Header';
 import NotFound from './Not-Found/NotFound';
 import OrderPalace from './Order-Palace/OrderPalace';
+import MyOrders from './Users-Page/My-Orders/MyOrders';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route exact path='/order/:orderId'>
  <OrderPalace/>
+</Route>
+        <Route exact path='/myorders'>
+ <MyOrders/>
 </Route>
         <Route exact path ='/give-review'>
             <GiveReview/>

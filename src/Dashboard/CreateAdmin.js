@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { useForm } from "react-hook-form";
 import { Col, Row, Toast, Button} from 'react-bootstrap';
 import axios from 'axios';
-import useAuth from './../Hooks/useAuth';
+import useAuth from '../Hooks/useAuth';
 const CreateAdmin = () => {
     const{user}=useAuth()
     const { register,reset, handleSubmit,formState: { errors } } = useForm();

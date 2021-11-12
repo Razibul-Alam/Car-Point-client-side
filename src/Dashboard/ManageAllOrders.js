@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios'
 import { Table, Button } from 'react-bootstrap';
-import ModalMessage from './../ModalMessage/ModalMessage';
+import ModalMessage from '../ModalMessage/ModalMessage';
 
 const ManageAllOrders = () => {
     const[allOrders,setAllOrders]=useState([])
@@ -21,7 +21,7 @@ const ManageAllOrders = () => {
        const cancelOrder=(_id)=>{
         const confirmDelete=window.confirm('Are you sure? Do you want to remove?')
         if(confirmDelete){
-         axios.delete(`https://powerful-harbor-60466.herokuapp.com//removeItem/${_id}`)
+         axios.delete(`https://powerful-harbor-60466.herokuapp.com/removeItem/${_id}`)
          .then((result) =>{if(result.data.deletedCount>0){
  const remainingItems=allOrders?.filter(booking=>!booking._id==_id)
  handleShow()
@@ -32,8 +32,8 @@ const ManageAllOrders = () => {
         
        // booking approve handle
     const approveOrder=(id)=>{
-        const approval={status:'Approved',id:id}
-  axios.put('https://powerful-harbor-60466.herokuapp.com//updateStatus',approval)
+        const approval={status:'shiped',id:id}
+  axios.put('https://powerful-harbor-60466.herokuapp.com/updateStatus',approval)
   .then((result)=>console.log(result))
       }
     return (
@@ -67,7 +67,7 @@ const ManageAllOrders = () => {
     <td>{order?.address}</td>
     <td>{order?.status}</td>
     <td><Button className='me-2' onClick={()=>{approveOrder(order?._id)}}>Approve</Button></td>
-    <td><Button onClick={()=>{cancelOrder(order?._id)}}>Cancel</Button></td>
+    <td><Button variant='danger' onClick={()=>{cancelOrder(order?._id)}}>Cancel</Button></td>
     
   </tr>)}
    

@@ -13,9 +13,9 @@ import OrderPalace from './Order-Palace/OrderPalace';
 import MyOrders from './Users-Page/My-Orders/MyOrders';
 import RegisterPage from './Login-Page/RegisterPage';
 import PrivateRoute from './Login-Page/PrivateRoute';
-import ManageAllOrders from './Admin-Dashboard/ManageAllOrders';
-import AdminDashboard from './Admin-Dashboard/AdminDashboard';
-import CreateAdmin from './Admin-Dashboard/CreateAdmin';
+import ManageAllOrders from './Dashboard/ManageAllOrders';
+import AdminDashboard from './Dashboard/AdminDashboard';
+import CreateAdmin from './Dashboard/CreateAdmin';
 
 function App() {
   return (
@@ -29,9 +29,6 @@ function App() {
         <Route exact path ='/services'>
             <Services/>
         </Route>
-        {/* <Route exact path ='/addcar'>
-            <AddCar/>
-        </Route> */}
         <PrivateRoute exact path='/order/:orderId'>
  <OrderPalace/>
 </PrivateRoute>
@@ -50,9 +47,9 @@ function App() {
         <Route exact path ='/register'>
             <RegisterPage/>
         </Route>
-        <Route exact path ='/admin-dashboard'>
+        <PrivateRoute path ='/dashboard'>
             <AdminDashboard/>
-        </Route>
+        </PrivateRoute>
         <Route exact path ='/create-admin'>
             <CreateAdmin/>
         </Route>

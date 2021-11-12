@@ -27,7 +27,6 @@ axios.put('https://hidden-bayou-72012.herokuapp.com/updateStatus',approval)
             <Card.Text className='text-warning'>
              {status}
             </Card.Text>
-           {status.length<8&& <Button className='me-2' onClick={()=>{approveBooking(_id)}}>Approve</Button>}
             <Button onClick={()=>{cancelOrder(_id)}}>Cancel</Button>
           </Card.Body>
           

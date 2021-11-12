@@ -16,7 +16,7 @@ axios.put('https://hidden-bayou-72012.herokuapp.com/updateStatus',approval)
         <Card>
           <Card.Body className='text-center'> 
            <Card.Text className='text-danger'>
-             Booked by {title}
+              {title}
             </Card.Text>
             <Card.Text className=''>
              booked by {name}

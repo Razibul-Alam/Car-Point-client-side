@@ -7,6 +7,7 @@ import ManageAllOrders from './ManageAllOrders';
     Link,
     useRouteMatch
   } from "react-router-dom";
+  import './Dashboard.css';
 import CreateAdmin from './CreateAdmin';
 import useAuth from './../Hooks/useAuth';
 import MyOrders from '../Users-Page/My-Orders/MyOrders';
@@ -20,8 +21,8 @@ const AdminDashboard = () => {
 const{admin,logOut}=useAuth()
     return (
         <div className='row'>
-<div className='col-lg-3 col-sm-12'>
-        <h2>Dashboard</h2>
+<div className='col-lg-3 col-sm-12 sidebar'>
+        <h4>Dashboard</h4>
       { admin&& <ul>
           {/* <li>
             <Link to={`${url}`}>

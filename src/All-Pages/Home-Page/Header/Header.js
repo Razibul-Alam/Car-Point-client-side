@@ -1,7 +1,6 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import { useHistory } from 'react-router';
 import useAuth from './../../../Hooks/useAuth';
 const Header = () => {
     const{user,logOut,admin}=useAuth()
@@ -12,11 +11,12 @@ const Header = () => {
      
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Container>
-  <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+  <Navbar.Brand href="#home">CAR POINT</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="ms-auto">
       <Nav.Link as= {Link} to='/'>Home</Nav.Link>
+      <Nav.Link as= {Link} to='/about'>About Us</Nav.Link>
       <Nav.Link as= {Link} to='/explore'>Explore</Nav.Link>
       {/* {admin&&<Nav.Link as= {Link} to='/addcar'>Add Car</Nav.Link>}
       <Nav.Link as= {Link} to='/manage-orders'>Manage-Orders</Nav.Link>

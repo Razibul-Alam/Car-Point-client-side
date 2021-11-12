@@ -1,12 +1,15 @@
 import { initializeApp } from "firebase/app";
+import axios from 'axios'
 import { GoogleAuthProvider,getAuth, signInWithPopup,signOut ,createUserWithEmailAndPassword,signInWithEmailAndPassword, onAuthStateChanged,updateProfile} from "firebase/auth";
 import {useEffect,useState } from "react";
 import { firebaseConfig } from './../FirebaseConfig/FirebaseConfig';
 const provider = new GoogleAuthProvider();
 const firebaseApp =initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
+
 const useFirebase=()=>{
   const[user,setUser]=useState([])
+  const[admin,setAdmin]=useState(false)
   const[authError,setAuthError]=useState('')
   const[isLoading,setIsLoading]=useState(true);
 // google login
@@ -25,6 +28,8 @@ const loginWithGoogle=()=>{
                   setAuthError('');
                   const newUser={email:email,displayName:name}
                   setUser(newUser)
+                  const dbUser={email:email,displayName:name,role:'user'}
+                  savedUserToDatabase(dbUser)
                    // send name to firebase after creation
                 updateProfile(auth.currentUser, {
                   displayName: name
@@ -39,7 +44,15 @@ const loginWithGoogle=()=>{
               })
               .finally(() => setIsLoading(false));
         }
+//  send user data to server
+const savedUserToDatabase=(user)=>{
+  axios.post('https://powerful-harbor-60466.herokuapp.com/adduser',user)
+      .then(response => { 
+       
+        
+      })
 
+}
         // login user with email and password
         const loginWithEmail=(email,password,location,history)=>{
           setIsLoading(true);
@@ -69,6 +82,15 @@ const loginWithGoogle=()=>{
      
      },[])
         // ----
+        // check admin
+        useEffect(()=>{
+          axios.get(`https://powerful-harbor-60466.herokuapp.com/getAdmin?email=${user.email}`)
+          .then(res => {
+            const isAdmin = res.data;
+            setAdmin(isAdmin)
+            
+          })
+        },[user.email])
         // logout method
 const logOut=()=>{
   setIsLoading(true)
@@ -80,6 +102,6 @@ const logOut=()=>{
   
 }
          
-        return {loginWithGoogle,user,setUser,logOut,authError,setAuthError,isLoading,registerUser,loginWithEmail}
+        return {loginWithGoogle,user,setUser,logOut,authError,setAuthError,isLoading,registerUser,loginWithEmail,admin}
 }
 export default useFirebase;

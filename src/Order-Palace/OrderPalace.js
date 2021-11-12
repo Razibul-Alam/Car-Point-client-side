@@ -9,7 +9,7 @@ const OrderPalace = () => {
     const{orderId}=useParams()
     console.log(orderId,singleItem)
     useEffect(()=>{
-        axios.get(`http://localhost:5000/singleItem/${orderId}`)
+        axios.get(`https://powerful-harbor-60466.herokuapp.com/singleItem/${orderId}`)
         .then(res => {
           const item= res.data;
           setSingleItem(item[0])

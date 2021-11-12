@@ -8,7 +8,7 @@ const Services = () => {
 
     useEffect(()=>{
         setInitialLoading(true)
-        axios.get(`http://localhost:5000/allcars`)
+        axios.get(`https://powerful-harbor-60466.herokuapp.com/allcars`)
         .then(res => {
           const allServices = res.data;
           // console.log(allAdventure)

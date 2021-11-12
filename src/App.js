@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './All-Pages/Home-Page/Home/Home';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Services from './All-Pages/Home-Page/Services/Services';
-import AddCar from './Admin-Page/AddCar';
+// import AddCar from './Admin-Page/AddCar';
 import GiveReview from './Users-Page/Give-Review/GiveReview';
 import AuthProvider from './AuthProvider/AuthProvider';
 import LoginPage from './Login-Page/LoginPage';
@@ -14,6 +14,8 @@ import MyOrders from './Users-Page/My-Orders/MyOrders';
 import RegisterPage from './Login-Page/RegisterPage';
 import PrivateRoute from './Login-Page/PrivateRoute';
 import ManageAllOrders from './Admin-Dashboard/ManageAllOrders';
+import AdminDashboard from './Admin-Dashboard/AdminDashboard';
+import CreateAdmin from './Admin-Dashboard/CreateAdmin';
 
 function App() {
   return (
@@ -27,9 +29,9 @@ function App() {
         <Route exact path ='/services'>
             <Services/>
         </Route>
-        <Route exact path ='/addcar'>
+        {/* <Route exact path ='/addcar'>
             <AddCar/>
-        </Route>
+        </Route> */}
         <PrivateRoute exact path='/order/:orderId'>
  <OrderPalace/>
 </PrivateRoute>
@@ -47,6 +49,12 @@ function App() {
         </Route>
         <Route exact path ='/register'>
             <RegisterPage/>
+        </Route>
+        <Route exact path ='/admin-dashboard'>
+            <AdminDashboard/>
+        </Route>
+        <Route exact path ='/create-admin'>
+            <CreateAdmin/>
         </Route>
         <Route exact path ='*'>
             <NotFound/>

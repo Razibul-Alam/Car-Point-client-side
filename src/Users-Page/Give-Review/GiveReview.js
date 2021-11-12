@@ -18,7 +18,7 @@ const GiveReview = () => {
             // name:user.displayName,
             rating:data.rating,
         }
-      axios.post('http://localhost:5000/addReview',bookingInfo)
+      axios.post('https://powerful-harbor-60466.herokuapp.com/addReview',bookingInfo)
       .then(response =>{
           if(response.data.insertedId){
             reset()

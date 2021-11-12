@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-
+import axios from 'axios'
 import {Button} from 'react-bootstrap';
 import { useHistory, useLocation } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,6 +20,9 @@ const LoginPage = () => {
         .then((result) => {
             const user = result.user;
             setUser(user)
+            // save user in database
+            const newUser={email:user.email,displayName:user.displayName,role:'user'};
+            saveUser(newUser)
             history.push(redirectLocation)
           })
           .catch((error) => {
@@ -28,6 +31,12 @@ const LoginPage = () => {
             handleShow()
           })
     }
+       // booking save user
+       const saveUser=(user)=>{
+        
+  axios.put('https://powerful-harbor-60466.herokuapp.com/saveUser',user)
+  .then((result)=>console.log(result))
+      }
     return (
         <>
         {/* <ModalMessage show={show} setShow={setShow} message={error} /> */}

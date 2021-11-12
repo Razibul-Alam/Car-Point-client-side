@@ -12,7 +12,7 @@ const MyOrders = () => {
     const{user}=useAuth()
     // load all orders
     useEffect(()=>{
-        axios.get(`http://localhost:5000/getOrdersByEmail?email=${user?.email}`)
+        axios.get(`https://powerful-harbor-60466.herokuapp.com/getOrdersByEmail?email=${user?.email}`)
         .then(res => {
           const allOrders = res.data;
         //   console.log(allBookings)
@@ -25,7 +25,7 @@ const MyOrders = () => {
        const cancelOrder=(_id)=>{
         const confirmDelete=window.confirm('Are you sure? Do you want to remove?')
         if(confirmDelete){
-         axios.delete(`http://localhost:5000/removeItem/${_id}`)
+         axios.delete(`https://powerful-harbor-60466.herokuapp.com/removeItem/${_id}`)
          .then((result) =>{if(result.data.deletedCount>0){
  const remainingItems=myOrders?.filter(booking=>!booking._id==_id)
  handleShow()

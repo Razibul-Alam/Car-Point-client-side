@@ -9,7 +9,7 @@ const ManageAllOrders = () => {
     const handleShow = () => setShow(true);
         // load all orders
         useEffect(()=>{
-            axios.get(`http://localhost:5000/allOrders`)
+            axios.get(`https://powerful-harbor-60466.herokuapp.com/allOrders`)
             .then(res => {
               const allOrders = res.data;
               setAllOrders(allOrders)
@@ -21,7 +21,7 @@ const ManageAllOrders = () => {
        const cancelOrder=(_id)=>{
         const confirmDelete=window.confirm('Are you sure? Do you want to remove?')
         if(confirmDelete){
-         axios.delete(`http://localhost:5000/removeItem/${_id}`)
+         axios.delete(`https://powerful-harbor-60466.herokuapp.com//removeItem/${_id}`)
          .then((result) =>{if(result.data.deletedCount>0){
  const remainingItems=allOrders?.filter(booking=>!booking._id==_id)
  handleShow()
@@ -33,7 +33,7 @@ const ManageAllOrders = () => {
        // booking approve handle
     const approveOrder=(id)=>{
         const approval={status:'Approved',id:id}
-  axios.put('http://localhost:5000/updateStatus',approval)
+  axios.put('https://powerful-harbor-60466.herokuapp.com//updateStatus',approval)
   .then((result)=>console.log(result))
       }
     return (

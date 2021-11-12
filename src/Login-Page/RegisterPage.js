@@ -13,7 +13,7 @@ const RegisterPage = () => {
 
     const onSubmit = data =>{
 
-    //   axios.post('http://localhost:5000/addcar',info)
+    //   axios.post('https://powerful-harbor-60466.herokuapp.com/addcar',info)
     //   .then(response => { 
     //     handleShow()
     //     reset()

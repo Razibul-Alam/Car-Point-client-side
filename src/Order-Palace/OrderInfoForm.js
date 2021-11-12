@@ -22,7 +22,7 @@ const OrderInfoForm = ({info}) => {
             address:data.address,
             phone:data.phone
         }
-      axios.post('http://localhost:5000/addOrder',bookingInfo)
+      axios.post('https://powerful-harbor-60466.herokuapp.com/addOrder',bookingInfo)
       .then(response =>{
           if(response.data.insertedId){
             reset()

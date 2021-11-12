@@ -8,7 +8,7 @@ const Reviews = () => {
 
     useEffect(()=>{
         setInitialLoading(true)
-        axios.get(`http://localhost:5000/allReviews`)
+        axios.get(`https://powerful-harbor-60466.herokuapp.com/allReviews`)
         .then(res => {
           const allReviews = res.data;
           // console.log(allAdventure)

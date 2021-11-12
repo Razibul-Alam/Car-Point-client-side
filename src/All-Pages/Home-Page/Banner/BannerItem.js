@@ -6,15 +6,15 @@ const BannerItem = () => {
     return (
         <main style={{height:'500px'}} className="row d-flex align-items-center bg-dark text-light">
         <div className="col-md-4 offset-md-1">
-            <h1 className='text-primary'>FEEL THE WORLD <br/>FROM HEART</h1>
+            <h1 className='text-primary'>TAKE ORDER<br/>BECOME WONER</h1>
             <p className="text-light">
-               We are ready to fly with you.Book a ticket and fly with us.Also feel the earth from deep.
-               We are ready to fly with you.Book a ticket and fly with us.Also feel the earth from deep.
+            You can become a car woner taking order. Dream will be true now.
+            You can become a car woner taking order. Dream will be true now.
             </p>
-            <Link to ="/adventures"><button className="btn btn-primary">Buy NOW</button></Link>
+            <Link to ="/adventures"><button className="btn btn-primary">Buy Now</button></Link>
         </div>
         <div className="col-md-7">
-            <img src='https://i.ibb.co/QX7htmz/pajero.jpg' alt="" className="img-fluid"/>
+            <img src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2FyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' alt="" className="img-fluid"/>
         </div>
     </main>
     );

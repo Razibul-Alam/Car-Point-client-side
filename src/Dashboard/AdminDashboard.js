@@ -13,18 +13,20 @@ import MyOrders from '../Users-Page/My-Orders/MyOrders';
 import GiveReview from '../Users-Page/Give-Review/GiveReview';
 import Payment from './Payment';
 import ManageProducts from './ManageProducts';
+import { Button } from 'react-bootstrap';
 const AdminDashboard = () => {
     let { path, url } = useRouteMatch();
     console.log(path,url)
-const{admin}=useAuth()
+const{admin,logOut}=useAuth()
     return (
-        <div>
-        <h2>Topics</h2>
+        <div className='row'>
+<div className='col-lg-3 col-sm-12'>
+        <h2>Dashboard</h2>
       { admin&& <ul>
-          <li>
+          {/* <li>
             <Link to={`${url}`}>
               Dashboard</Link>
-          </li>
+          </li> */}
           <li>
             <Link to={`${url}/addcar`}>Add Car</Link>
           </li>
@@ -37,12 +39,15 @@ const{admin}=useAuth()
           <li>
             <Link to={`${url}/manage-orders`}>Manage Orders</Link>
           </li>
+          <li><Button onClick={logOut}>Logout</Button></li>
         </ul>}
+        
+
       { !admin&& <ul>
-          <li>
+          {/* <li>
             <Link to={`${url}`}>
               Dashboard</Link>
-          </li>
+          </li> */}
           <li>
             <Link to={`${url}/my-orders`}>My Orders</Link>
           </li>
@@ -52,11 +57,13 @@ const{admin}=useAuth()
           <li>
             <Link to={`${url}/payment`}>Payment</Link>
           </li>
+          <li><Button onClick={logOut}>Logout</Button></li>
         </ul>}
-  
+  </div>
+  <div className='col-lg-8'>
         <Switch>
           <Route exact path={path}>
-            dashboard
+            {admin?<ManageAllOrders/>:<MyOrders/>}
           </Route>
           <Route path={`${path}/addcar`}>
             <AddCar/>
@@ -81,16 +88,9 @@ const{admin}=useAuth()
             <Payment/>
           </Route>
         </Switch>
+        </div>
       </div>
     );
 };
-function Testing() {
-  
-    return (
-      <div>
-        <h3>topicId</h3>
-      </div>
-    );
-  }
 
 export default AdminDashboard;

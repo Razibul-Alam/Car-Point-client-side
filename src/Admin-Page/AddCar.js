@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import ModalMessage from './../ModalMessage/ModalMessage';
 
 const AddCar = () => {
   const [show, setShow] = useState(false);
@@ -41,12 +42,13 @@ const AddCar = () => {
 
     return (
       <>
+       <ModalMessage show={show} setShow={setShow} message={'Succesfully added'} />
       <div className="mt-5 d-flex justify-content-center row">
          <div className="p-4 rounded col-lg-6 col-sm-10 shadow">
          <h2 className="text-center text-danger mb-4">Add Car</h2>
     <form onSubmit={handleSubmit(onSubmit)}>
-    <input className="form-control mt-2"  type="text" placeholder="Title" {...register("title")} />
-    <input className="form-control mt-2"  type="number" placeholder="Price" {...register("price")} />
+    <input className="form-control mt-2"  type="text" placeholder="Title" {...register("title",{ required: true })} />
+    <input className="form-control mt-2"  type="number" placeholder="Price" {...register("price",{ required: true })} />
     <input className="form-control mt-2"  type="textArea" placeholder="Description" {...register("description", { required: true })} />
     <input className="form-control mt-2"
        type="file"

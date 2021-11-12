@@ -21,7 +21,7 @@ const ManageProducts = () => {
        const cancelproduct=(_id)=>{
         const confirmDelete=window.confirm('Are you sure? Do you want to remove?')
         if(confirmDelete){
-         axios.delete(`http://localhost:5000/removeCarItem/${_id}`)
+         axios.delete(`https://powerful-harbor-60466.herokuapp.com/removeCarItem/${_id}`)
          .then((result) =>{if(result.data.deletedCount>0){
  const remainingItems=allProducts?.filter(booking=>!booking._id==_id)
  handleShow()
@@ -33,9 +33,10 @@ const ManageProducts = () => {
       
     return (
         <>
-         <ModalMessage show={show} setShow={setShow} message={'Succesfully deleted'} />
+         <ModalMessage show={show} setShow={setShow} message={'Succesfully removed'} />
         <div className='container'>
-        <h2 className="text-danger text-center my-3">{allProducts?.length} products</h2>
+        <h2 className="text-danger text-center my-3">All Products {allProducts?.length}
+        </h2>
     <Table bproducted hover responsive variant='dark'>
     <thead>
       <tr>

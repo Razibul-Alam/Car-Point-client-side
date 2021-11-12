@@ -16,6 +16,7 @@ import PrivateRoute from './Login-Page/PrivateRoute';
 import ManageAllOrders from './Dashboard/ManageAllOrders';
 import AdminDashboard from './Dashboard/AdminDashboard';
 import CreateAdmin from './Dashboard/CreateAdmin';
+import Explore from './Explore/Explore';
 
 function App() {
   return (
@@ -32,15 +33,15 @@ function App() {
         <PrivateRoute exact path='/order/:orderId'>
  <OrderPalace/>
 </PrivateRoute>
-        <Route exact path='/myorders'>
+        {/* <Route exact path='/myorders'>
  <MyOrders/>
+</Route> */}
+        <Route exact path='/explore'>
+ <Explore/>
 </Route>
-        <Route exact path='/manage-orders'>
- <ManageAllOrders/>
-</Route>
-        <Route exact path ='/give-review'>
+        {/* <Route exact path ='/give-review'>
             <GiveReview/>
-        </Route>
+        </Route> */}
         <Route exact path ='/login'>
             <LoginPage/>
         </Route>
@@ -50,9 +51,9 @@ function App() {
         <PrivateRoute path ='/dashboard'>
             <AdminDashboard/>
         </PrivateRoute>
-        <Route exact path ='/create-admin'>
+        {/* <Route exact path ='/create-admin'>
             <CreateAdmin/>
-        </Route>
+        </Route> */}
         <Route exact path ='*'>
             <NotFound/>
         </Route>

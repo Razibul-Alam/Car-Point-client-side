@@ -5,9 +5,10 @@ import axios from 'axios';
 
 // import ToastMessage from '../Toast-message/ToastMessage';
 import useAuth from './../Hooks/useAuth';
+import ModalMessage from './../ModalMessage/ModalMessage';
 const OrderInfoForm = ({info}) => {
-    // const [show, setShow] = useState(false);
-    // const [toastShow, setToastShow] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
     const{title,descripton}=info
     const{user}=useAuth()
     const { register,reset, handleSubmit,formState: { errors } } = useForm();
@@ -25,8 +26,9 @@ const OrderInfoForm = ({info}) => {
       axios.post('https://powerful-harbor-60466.herokuapp.com/addOrder',bookingInfo)
       .then(response =>{
           if(response.data.insertedId){
+            handleShow()
             reset()
-            // setToastShow(true)
+            
           }
         });
         
@@ -34,6 +36,7 @@ const OrderInfoForm = ({info}) => {
     }
     return (
         <>
+         <ModalMessage show={show} setShow={setShow} message={'Succesfully order complete'} />
         <h5 className="text-center mb-3"><span className="text-danger">{user?.displayName}</span> please confirm your order</h5>
         <div className="mt-4 d-flex justify-content-center row">
          <div className="p-4 rounded col-lg-8 col-sm-10 shadow">
@@ -41,8 +44,8 @@ const OrderInfoForm = ({info}) => {
             <form onSubmit={handleSubmit(onSubmit)}>
     <input className="form-control mt-3" type="text" readOnly defaultValue={user?.email} {...register("email")} /> 
     <input className="form-control mt-3" type="text" readOnly defaultValue={user?.displayName} {...register("name")} />
-    <input className="form-control mt-3" type="number" placeholder="Phone" {...register("phone")} />
-    <input className="form-control mt-3" type="text" placeholder="Address" {...register("address")} />
+    <input className="form-control mt-3" type="number" placeholder="Phone" {...register("phone",{ required: true })} />
+    <input className="form-control mt-3" type="text" placeholder="Address" {...register("address",{ required: true }) } />
     {errors.exampleRequired && <span>This field is required</span>}
     <input className='form-control bg-primary mt-3' type="submit" value="Confirm Book"/>
   </form>

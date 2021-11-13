@@ -13,12 +13,6 @@ const EmailLogin = () => {
       const history=useHistory()
 
     const onSubmit = data =>{
-
-    //   axios.post('https://powerful-harbor-60466.herokuapp.com/addcar',info)
-    //   .then(response => { 
-    //     handleShow()
-    //     reset()
-    //   })
      loginWithEmail(data.email,data.password,location,history)
     }
     return (

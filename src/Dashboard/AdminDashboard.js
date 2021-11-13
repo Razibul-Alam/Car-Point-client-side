@@ -22,7 +22,6 @@ const{admin,logOut}=useAuth()
     return (
         <div className='row'>
 <div className='col-lg-3 col-sm-12 sidebar'>
-        <h4>Dashboard</h4>
       { admin&& <ul>
           {/* <li>
             <Link to={`${url}`}>

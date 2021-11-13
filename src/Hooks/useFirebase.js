@@ -22,6 +22,7 @@ const loginWithGoogle=()=>{
        
         // resister user
         const registerUser=(email,password,name,history)=>{
+          setAuthError('');
           setIsLoading(true);
           createUserWithEmailAndPassword(auth, email, password)
               .then((userCredential) => {
@@ -49,12 +50,12 @@ const savedUserToDatabase=(user)=>{
   axios.post('https://powerful-harbor-60466.herokuapp.com/adduser',user)
       .then(response => { 
        
-        
       })
 
 }
         // login user with email and password
         const loginWithEmail=(email,password,location,history)=>{
+          setAuthError('');
           setIsLoading(true);
           signInWithEmailAndPassword(auth, email, password)
               .then((userCredential) => {
@@ -101,7 +102,6 @@ const logOut=()=>{
   }).finally(()=>setIsLoading(false))
   
 }
-         
         return {loginWithGoogle,user,setUser,logOut,authError,setAuthError,isLoading,registerUser,loginWithEmail,admin}
 }
 export default useFirebase;

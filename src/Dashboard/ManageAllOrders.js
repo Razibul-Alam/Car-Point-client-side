@@ -46,7 +46,7 @@ const ManageAllOrders = () => {
       <tr>
         <th>SL</th>
         <th>Name</th>
-        {/* <th>Email</th> */}
+        <th>Email</th>
         <th>Product</th>
         <th>Phone</th>
         <th>Address</th>
@@ -61,7 +61,7 @@ const ManageAllOrders = () => {
    {allOrders.map((order,index)=><tr>
     <td>{index+1}</td>
     <td>{order?.name}</td>
-    {/* <td>{order.email}</td> */}
+    <td>{order.email}</td>
     <td>{order?.title}</td>
     <td>{order?.phone}</td>
     <td>{order?.address}</td>

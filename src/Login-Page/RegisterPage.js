@@ -4,25 +4,19 @@ import axios from 'axios';
 import useAuth from './../Hooks/useAuth';
 import { Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 const RegisterPage = () => {
     const history=useHistory()
-    const {registerUser,user,authError,setAuthError,isLoading}=useAuth()
-    const [show, setShow] = useState(false);
-    const handleShow = () => setShow(true)
-      const { register,reset, handleSubmit,formState: { errors } } = useForm();
+    const {registerUser,authError}=useAuth()
+      const { register, handleSubmit,formState: { errors } } = useForm();
 
     const onSubmit = data =>{
-
-    //   axios.post('https://powerful-harbor-60466.herokuapp.com/addcar',info)
-    //   .then(response => { 
-    //     handleShow()
-    //     reset()
-    //   })
      registerUser(data.email,data.password,data.name,history)
     }
   
     return (
         <>
+        {authError && <Alert severity="success">{authError} try again</Alert>}
         <div className="mt-5 d-flex justify-content-center row">
            <div className="p-4 rounded col-lg-6 col-sm-10 shadow">
            <h2 className="text-center text-danger mb-4">Please Register</h2>
@@ -34,10 +28,9 @@ const RegisterPage = () => {
       {errors.exampleRequired && <span>This field is required</span>}
      <input className="form-control mt-2 bg-primary"  type="submit"/>
     </form>
+    <p className="text-center my-2"> <Link to='/login'> You already have account? Login</Link></p>
     </div>
     </div>
-    {user?.email && <Alert severity="success">User Created successfully!</Alert>}
-    {authError && <Alert severity="success">{authError}</Alert>}
     </>
     );
 };

@@ -1,16 +1,8 @@
 import React from 'react';
 import {Button,Col,Card} from 'react-bootstrap'
-import axios from 'axios';
-
 const MySingleOrder = ({order,cancelOrder}) => {
-    const{_id,title,status,name,address,phone}=order;
+    const{_id,title,status,name,address}=order;
   
-    // booking approve handle
-    const approveBooking=(id)=>{
-      const approval={status:'Approved',id:id}
-axios.put('https://hidden-bayou-72012.herokuapp.com/updateStatus',approval)
-.then((result)=>console.log(result))
-    }
     return (
         <Col>
         <Card>

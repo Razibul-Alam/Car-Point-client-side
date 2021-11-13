@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import axios from 'axios'
-import {Button} from 'react-bootstrap';
+import {Alert, Button} from 'react-bootstrap';
 import { useHistory, useLocation } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -8,13 +8,12 @@ import useAuth from './../Hooks/useAuth';
 import { Link } from 'react-router-dom';
 import EmailLogin from './EmailLogin';
 
+
 const LoginPage = () => {
-    const [show, setShow] = useState(false);
-    const handleShow = () => setShow(true);
     const location=useLocation()
     const history =useHistory()
     const redirectLocation=location?.state?.from || '/'
-    const {loginWithGoogle,setUser,error,setError}=useAuth()
+    const {loginWithGoogle,setUser,authError,setAuthError}=useAuth()
     const handleLoginWithGoogle=()=>{
         loginWithGoogle()
         .then((result) => {
@@ -27,11 +26,10 @@ const LoginPage = () => {
           })
           .catch((error) => {
             const errorMessage = error.message;
-            setError(errorMessage)
-            handleShow()
+            setAuthError(errorMessage)
           })
     }
-       // booking save user
+       //  save user
        const saveUser=(user)=>{
         
   axios.put('https://powerful-harbor-60466.herokuapp.com/saveUser',user)
@@ -39,8 +37,9 @@ const LoginPage = () => {
       }
     return (
         <>
-        {/* <ModalMessage show={show} setShow={setShow} message={error} /> */}
+        
        <section className="m-auto justify-content-center row bg-dark">
+       {authError && <Alert severity="success">{authError} try again</Alert>}
        <div className="col-lg-6 col-md-6 col-sm-8 my-5">
            <div className="m-2 p-2 bg-light">
                <EmailLogin/>

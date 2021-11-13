@@ -7,7 +7,7 @@ const SingleService = ({service}) => {
     return (
       <Col>
       <Card>
-        <Card.Img variant="top" src={img} />
+        <Card.Img variant="top" src={img} className='img-fluid' />
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>

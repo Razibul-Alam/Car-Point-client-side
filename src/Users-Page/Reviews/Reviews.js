@@ -11,7 +11,6 @@ const Reviews = () => {
         axios.get(`https://powerful-harbor-60466.herokuapp.com/allReviews`)
         .then(res => {
           const allReviews = res.data;
-          // console.log(allAdventure)
           setReviews(allReviews)
           setInitialLoading(false)
           
